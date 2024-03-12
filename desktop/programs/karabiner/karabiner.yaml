@@ -1,0 +1,337 @@
+#file: noinspection YAMLSchemaValidation
+
+- description: 'fn-L → Lock Screen'
+  manipulators:
+  - from: fn-l
+    to:
+      halt: true
+      keys: cmd-ctrl-q
+      repeat: false
+
+- description: 'f19 → Hyper'
+  manipulators:
+  - from: f19
+    parameters:
+      basic.to_if_held_down_threshold_milliseconds: 0
+    to_if_alone: f20
+    to_if_held_down: hyper
+  - hyper-t: rcmd-rctrl-rshift-t
+    hyper-cmd: rctrl-ralt-rshift
+    cmd-f19: rctrl-ralt-rshift
+    hyper-ctrl: rcmd-ralt-rshift
+    ctrl-f19: rcmd-ralt-rshift
+    hyper-alt: rcmd-rctrl-rshift
+    alt-f19: rcmd-rctrl-rshift
+    hyper-shift: rcmd-rctrl-ralt
+    shift-f19: rcmd-rctrl-ralt
+    hyper-fn: ctrl
+    fn-f19: ctrl
+
+- applications: iTerm2(com.googlecode.iterm2)
+  description: '[iTerm] (Cmd, Alt)-Arrow'
+  manipulators:
+  - cmd-left: alt-b
+    cmd-right: alt-f
+    alt-left: ctrl-a
+    alt-right: ctrl-e
+
+- applications: Jetbrains(com.jetbrains.*)
+  description: '[Jetbrains] (Cmd, Alt, Shift)-Arrow'
+  manipulators:
+  - shift*cmd-left_right: alt-left_right
+    alt-shift-up_down: cmd-shift-up_down
+    cmd-up_down: cmd-up_down
+    cmd-shift-down: alt-j
+    cmd-shift-up: shift-alt-j
+    alt-down: alt-f
+    alt-up: shift-alt-f
+    ctrl-up_down: ctrl-shift-up_down
+    ctrl-shift-up_down: alt-up_down
+    cmd-alt-shift-down: shift-cmd-alt-j
+    cmd-alt-shift-up: escape
+    cmd-shift-return_or_enter: ctrl-t
+  comment: |
+    # Jetbrains keymap.xml
+    <action id="FindWordAtCaret">
+      <keyboard-shortcut first-keystroke="alt f" />
+    </action>
+    <action id="FindPrevWordAtCaret">
+      <keyboard-shortcut first-keystroke="shift alt f" />
+    </action>
+
+- applications: Visual Studio Code(com.microsoft.VSCode)
+  description: '[Visual Studio Code] (Ctrl, Alt, Shift)-Arrow'
+  manipulators:
+  - shift*cmd-left_right: alt-left_right
+    alt-shift-up_down: alt-up_down
+    cmd-up_down: cmd-alt-up_down
+    cmd-shift-down: cmd-d
+    cmd-shift-up: cmd-u  # curosr undo
+  - from: alt-down
+    to:
+      - cmd-k
+      - cmd-d
+  - alt-up: cmd-u  # curosr undo
+    cmd-alt-shift-down: shift-cmd-l
+    cmd-alt-shift-up: escape
+
+- description: '(Cmd ↔ Alt)-Arrow'
+  manipulators:
+  - shift*cmd-arrows: alt-arrows
+    shift*alt-arrows: cmd-arrows
+
+- description: 'fn-Page'
+  manipulators:
+  - shift-fn-up: cmd-shift-up
+    shift-fn-down: cmd-shift-down
+    any*fn-up: page_up
+    any*fn-down: page_down
+    any*fn-left: home
+    any*fn-right: end
+
+- description: '(Cmd ↔ Alt)-Backspace'
+  manipulators:
+  - cmd-delete_or_backspace: alt-delete_or_backspace
+    alt-delete_or_backspace: cmd-delete_or_backspace
+
+- description: '(Hyper, Option)-Tab'
+  manipulators:
+  - applications: Jetbrains(com.jetbrains.*)
+    from: hyper-tab
+    to: cmd-f12
+  - applications: Zed(dev.zed.Zed)
+    from: hyper-tab
+    to:
+      - cmd-f12
+      - in_search_box = true
+  - hyper-tab: ctrl-tab
+
+- description: 'Hyper-(Comma, Period, Q, Backspace, Grave)'
+  manipulators:
+  - hyper-q: rctrl-ralt-rshift-q
+    hyper-comma: rctrl-ralt-rshift-comma
+    hyper-period: rctrl-ralt-rshift-period
+    hyper-delete_or_backspace: fn-delete_forward
+    hyper-grave_accent_and_tilde: cmd-grave_accent_and_tilde
+
+- description: 'Command-(Caps Lock)'
+  manipulators:
+  - cmd-caps_lock: return_or_enter
+
+- description: 'Hyper-(F1~F12) → Mac Function Keys'
+  manipulators:
+  - hyper-f1: display_brightness_decrement
+    hyper-f2: display_brightness_increment
+    hyper-f3: mission_control
+    hyper-f4: spotlight
+    hyper-f5: dictation
+    hyper-f6: f6
+    hyper-f7: rewind
+    hyper-f8: play_or_pause
+    hyper-f9: fast_forward
+    hyper-f10: mute
+    hyper-f11: volume_decrement
+    hyper-f12: volume_increment
+
+- description: 'Change Won (₩) to grave accent (`) in Korean Layout'
+  manipulators:
+  - grave_accent_and_tilde: alt-grave_accent_and_tilde
+    conditions:
+      type: input_source_if
+      input_sources:
+        - language: ko
+
+- description: 'Caps Lock → Search Box on Current Application'
+  manipulators:
+  - conditions: in_search_box == true
+    from: button1
+    to:
+    - in_search_box = false
+  - conditions: in_search_box == true
+    from: escape
+    to:
+    - in_search_box = false
+    - escape
+  - conditions: in_search_box == true
+    from: caps_lock
+    to:
+    - in_search_box = false
+    - escape
+  - conditions: in_search_box == true
+    from: return_or_enter
+    to:
+    - in_search_box = false
+    - return_or_enter
+  - applications: Jetbrains(com.jetbrains.*)
+    conditions: shift == true
+    from: shift
+    to:
+    - in_search_box = true
+    - shift
+    - shift
+  - conditions:
+    - in_search_box == true
+    - shift == true
+    from: shift
+    to:
+    - escape
+    - in_search_box = false
+  - applications: Zed(dev.zed.Zed)
+    from: caps_lock
+    to:
+     - cmd-p
+     - in_search_box = true
+  - applications: Zed(dev.zed.Zed)
+    conditions: shift == true
+    from: shift
+    to:
+    - cmd-shift-p
+    - in_search_box = true
+  - applications: Obsidian(md.obsidian)
+    from: caps_lock
+    to:
+      - cmd-o
+      - in_search_box = true
+  - applications: Obsidian(md.obsidian)
+    conditions: shift == true
+    from: shift
+    to:
+    - cmd-p
+    - in_search_box = true
+  - applications: Aptakube(com.aptakube.Aptakube)
+    conditions: shift == true
+    from: shift
+    to:
+    - cmd-n
+    - in_search_box = true
+  - applications: Arc Browser(company.thebrowser.Browser)
+    from: caps_lock
+    to: cmd-k
+  - applications: Arc Browser(company.thebrowser.Browser)
+    conditions: shift == true
+    from: shift
+    to: cmd-t
+  - applications: Jetbrains(com.jetbrains.*)
+    from: caps_lock
+    to:
+    - in_search_box = true
+    - cmd-e
+  - applications: Jetbrains(com.jetbrains.*)
+    from: hyper-caps_lock
+    to:
+    - in_search_box = true
+    - cmd-shift-e
+  - applications: OpenLens(com.electron.open-lens)
+    from: caps_lock
+    to:
+    - in_search_box = true
+    - cmd-shift-p
+  - applications: Fork(com.DanPristupov.Fork)
+    from: caps_lock
+    to: cmd-p
+  - applications: Fork(com.DanPristupov.Fork)
+    conditions: shift == true
+    from: shift
+    to: cmd-p
+  - applications: iTerm2/Kitty(com.googlecode.iterm2;net.kovidgoyal.kitty)
+    from: caps_lock
+    to: ctrl-r
+  - applications: Kitty(net.kovidgoyal.kitty)
+    conditions: shift == true
+    from: shift
+    to: ctrl-alt-h
+  - caps_lock: cmd-k
+  - conditions: shift == true
+    from: shift
+    to: cmd-l
+
+- description: 'Disable Caps Lock'
+  manipulators:
+  - alt-caps_lock: vk_none
+    hyper-caps_lock: vk_none
+
+- applications: TypingMind(com.apple.Safari.WebApp.634D9C48-9424-4CC4-9377-0111A372D7F6;com.apple.Safari.WebApp.3CD34F74-FB4E-461F-B92A-BD80BBD59981)
+  description: 'Safari WebApp'
+  manipulators:
+  - cmd-b: cmd-alt-n
+  - cmd-n: cmd-alt-n
+  - cmd-shift-n: cmd-n
+
+- description: 'Hyper-Escape → Switch to default profile'
+  manipulators:
+  - from: hyper-escape
+    to:
+      shell_command:
+        '''/Library/Application Support/org.pqrs/Karabiner-Elements/bin/karabiner_cli'' --select-profile default ;
+        osascript -e "display notification \"Switch to default profile\" with title \"Karabiner\""'
+
+- applications: Jetbrains/Zed/Obsidian(com.jetbrains.*;dev.zed.Zed;md.obsidian)
+  description: '[JetBrains/Zed/Obsidian] Cmd-Space → Control-Space'
+  manipulators:
+  - cmd-spacebar: ctrl-spacebar
+    cmd-shift-spacebar: ctrl-shift-spacebar
+
+- description: 'button4, button5 → (Back, Forward)'
+  manipulators:
+  - applications: Web Browser(com.apple.Safari)
+    from: button4
+    to: cmd-open_bracket
+  - applications: Web Browser(com.apple.Safari)
+    from: button5
+    to: cmd-close_bracket
+  - applications: Aptakube(com.aptakube.Aptakube)
+    from: button4
+    to: cmd-open_bracket
+  - applications: Aptakube(com.aptakube.Aptakube)
+    from: button5
+    to: cmd-close_bracket
+
+- description: 'Cmd-(button4, button5) → (Left, Right) Tab'
+  manipulators:
+  - cmd-button4: cmd-shift-open_bracket
+    cmd-button5: cmd-shift-close_bracket
+
+- description: 'Option-(button4, button5) → (Prev, Next) Item'
+  manipulators:
+  - applications: Notion(notion.id)
+    from: alt-button4
+    to: ctrl-shift-j
+  - applications: Notion(notion.id)
+    from: alt-button5
+    to: ctrl-shift-k
+
+- applications: Slack(com.tinyspeck.slackmacgap)
+  description: '[Slack] Cmd-P → Cmd-K'
+  manipulators:
+  - from: cmd-p
+    to:
+      keys: cmd-k
+      repeat: true
+
+- applications: Duolingo(com.duolingo.DuolingoMobile)
+  description: '[Duolingo] button2 → Enter'
+  manipulators:
+  - button2: return_or_enter
+
+- applications: Parallels Desktop(com.parallels.desktop.console)
+  description: '[Parallels Desktop] F18 → Right Option'
+  manipulators:
+  - f18: shift-spacebar
+
+- description: 'Double Shift'
+  manipulators:
+  - conditions: shift == true
+    from: shift
+    to: shift
+  - conditions: shift != true
+    from: shift
+    to:
+    - shift = true
+    - shift
+    parameters:
+      basic.to_delayed_action_delay_milliseconds: 300
+    to_delayed_action:
+      to_if_invoked:
+      - shift = false
+      to_if_canceled:
+      - shift = false

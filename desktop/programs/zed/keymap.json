@@ -1,0 +1,52 @@
+[
+  {
+    "bindings": {
+      "fn-x": "workspace::Welcome",
+      "cmd-t": "workspace::NewFile",
+      "cmd-n": "workspace::NewFile",
+      "cmd-alt-n": "workspace::NewCenterTerminal",
+      "pageup": "editor::MovePageUp",
+      "pagedown": "editor::MovePageDown",
+      // alt <-> cmd swapped
+      "alt-up": "editor::AddSelectionAbove",
+      "alt-down": "editor::AddSelectionBelow",
+      "alt-shift-up": "editor::UndoSelection",
+      "alt-shift-down": "editor::SelectNext",
+      "cmd-up": "editor::SelectToNextSubwordEnd",
+      "cmd-down": "editor::MoveToNextSubwordEnd",
+      "cmd-alt-shift-down": "editor::SelectAllMatches",
+      "cmd-alt-shift-up": "editor::Cancel",
+      // hyper key
+      "cmd-ctrl-alt-shift-up": "pane::ActivatePrevItem",
+      "cmd-ctrl-alt-shift-down": "pane::ActivateNextItem",
+      "cmd-ctrl-alt-shift-left": "workspace::ActivatePreviousPane",
+      "cmd-ctrl-alt-shift-right": "workspace::ActivateNextPane",
+      "cmd-ctrl-alt-shift-enter": "terminal_panel::ToggleFocus",
+      "cmd-ctrl-alt-left": "workspace::ToggleLeftDock",
+      "cmd-ctrl-alt-right": "workspace::ToggleRightDock",
+      "cmd-ctrl-alt-down": "workspace::ToggleBottomDock"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-alt-d": ["editor::SelectNext", { "replace_newest": false }],
+      "ctrl-alt-f": ["editor::SelectNext", { "replace_newest": true }],
+      "ctrl-alt-shift-f": [
+        "editor::SelectPrevious",
+        { "replace_newest": true }
+      ],
+      "ctrl-space": "editor::ShowCompletions",
+      "cmd-enter": "editor::Rename"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-t": "workspace::NewTerminal",
+      "cmd-n": "workspace::NewTerminal",
+      "cmd-p": ["terminal::SendKeystroke", "ctrl-r"],
+      "alt-backspace": ["terminal::SendText", "\u0017"]
+    }
+  }
+]
