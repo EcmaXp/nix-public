@@ -1,0 +1,73 @@
+[
+  {
+    "bindings": {
+      "fn-x": "workspace::Welcome",
+      "cmd-t": "workspace::NewFile",
+      "cmd-alt-n": "workspace::NewCenterTerminal",
+      "cmd-shift-c": "editor::CopyRelativePath",
+      "home": "editor::MoveToBeginning",
+      "end": "editor::MoveToEnd",
+      "pageup": "editor::MovePageUp",
+      "pagedown": "editor::MovePageDown",
+      "shift-enter": "editor::ExpandExcerpts",
+      "shift-home": "editor::SelectToBeginning",
+      "shift-end": "editor::SelectToEnd",
+      "shift-pageup": "editor::SelectPageUp",
+      "shift-pagedown": "editor::SelectPageDown",
+      // alt <-> cmd swapped
+      "alt-up": "editor::AddSelectionAbove",
+      "alt-down": "editor::AddSelectionBelow",
+      "alt-shift-up": "editor::UndoSelection",
+      "alt-shift-down": "editor::SelectNext",
+      "cmd-up": ["editor::SelectPrevious", { "replace_newest": true }],
+      "cmd-down": ["editor::SelectNext", { "replace_newest": true }],
+      "cmd-shift-up": "editor::SelectLargerSyntaxNode",
+      "cmd-shift-down": "editor::SelectSmallerSyntaxNode",
+      "cmd-shift-alt-down": "editor::SelectAllMatches",
+      "cmd-shift-alt-up": "editor::Cancel",
+      // hyper key
+      "cmd-ctrl-alt-shift-up": "pane::ActivatePrevItem",
+      "cmd-ctrl-alt-shift-down": "pane::ActivateNextItem",
+      "cmd-ctrl-alt-shift-left": "workspace::ActivatePreviousPane",
+      "cmd-ctrl-alt-shift-right": "workspace::ActivateNextPane",
+      "cmd-ctrl-alt-shift-enter": "terminal_panel::ToggleFocus",
+      "cmd-ctrl-alt-left": "workspace::ToggleLeftDock",
+      "cmd-ctrl-alt-right": "workspace::ToggleRightDock",
+      "cmd-ctrl-alt-down": "workspace::ToggleBottomDock",
+      "cmd-ctrl-alt-enter": "workspace::ToggleZoom",
+      "ctrl-alt-shift-enter": "workspace::ToggleZoom",
+      "ctrl-alt-shift-left": "editor::SelectPrevious",
+      "ctrl-alt-shift-right": "editor::SelectNext"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "cmd-shift-f": "project_panel::NewSearchInDirectory",
+      "cmd-shift-c": "project_panel::CopyRelativePath"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-alt-d": ["editor::SelectNext", { "replace_newest": false }],
+      "ctrl-alt-f": ["editor::SelectNext", { "replace_newest": true }],
+      "ctrl-alt-shift-f": [
+        "editor::SelectPrevious",
+        { "replace_newest": true }
+      ],
+      "ctrl-space": "editor::ShowCompletions",
+      "cmd-enter": "editor::Rename",
+      "cmd-shift-enter": "editor::ToggleCodeActions"
+    }
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-t": "workspace::NewTerminal",
+      "cmd-n": "workspace::NewTerminal",
+      "cmd-p": ["terminal::SendKeystroke", "ctrl-r"],
+      "alt-backspace": ["terminal::SendText", "\u0017"]
+    }
+  }
+]

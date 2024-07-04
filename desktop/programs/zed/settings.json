@@ -1,0 +1,132 @@
+// Zed settings: https://zed.dev/docs/configuring-zed
+{
+  "base_keymap": "JetBrains",
+  "theme": {
+    "mode": "system",
+    "light": "Ayu Light",
+    "dark": "Ayu Dark"
+  },
+  "autosave": "on_focus_change",
+  "ui_font_family": "JetBrains Mono",
+  "ui_font_size": 16,
+  "buffer_font_family": "JetBrains Mono",
+  "buffer_font_size": 16,
+  "buffer_line_height": {
+    "custom": 1.5
+  },
+  "soft_wrap": "editor_width",
+  "cursor_blink": true,
+  "terminal": {
+    "dock": "bottom",
+    "blinking": "on",
+    "line_height": {
+      "custom": 1.5
+    },
+    "max_scroll_history_lines": 100000
+  },
+  "preview_tabs": {
+    "enable_preview_from_file_finder": true
+  },
+  "journal": {
+    "path": "~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Obsidian",
+    "hour_format": "hour24"
+  },
+  "redact_private_values": true,
+  "private_files": [
+    "**/*.env*",
+    "**/*.pem",
+    "**/*.key",
+    "**/*.cert",
+    "**/*.crt",
+    "**/secrets.yml"
+  ],
+  "show_copilot_suggestions": true,
+  "features": {
+    "copilot": true
+  },
+  "copilot": {
+    "disabled_globs": [
+      "**/*.env*",
+      "**/*.pem",
+      "**/*.key",
+      "**/*.cert",
+      "**/*.crt",
+      "**/secrets.yml",
+      "**/*.tfstate",
+      "**/*.toml",
+      "**/*.txt",
+      "**/*.md"
+    ]
+  },
+  "assistant": {
+    "version": "1",
+    "button": true,
+    "enabled": true,
+    "provider": {
+      "name": "openai",
+      "default_model": "gpt-4o"
+    }
+  },
+  "inlay_hints": {
+    "enabled": true
+  },
+  "languages": {
+    "TOML": {
+      "show_copilot_suggestions": false
+    },
+    "Plain Text": {
+      "show_copilot_suggestions": false
+    },
+    "Markdown": {
+      "show_copilot_suggestions": false
+    },
+    "Python": {
+      "show_copilot_suggestions": true,
+      "format_on_save": {
+        // https://github.com/zed-industries/community/discussions/1124
+        // https://docs.astral.sh/ruff/linter/
+        "external": {
+          "command": "bash",
+          "arguments": [
+            "-c",
+            "/etc/profiles/per-user/`id -nu`/bin/ruff lint --exit-zero --fix --stdin-filename {buffer_path} | /etc/profiles/per-user/`id -nu`/bin/ruff format --stdin-filename {buffer_path}"
+          ]
+        }
+      }
+    },
+    "YAML": {
+      "enable_language_server": false,
+      "format_on_save": "off"
+    },
+    "Nix": {
+      "tab_size": 2
+    }
+  },
+  "lsp": {
+    "rust-analyzer": {
+      "initialization_options": {
+        "checkOnSave": {
+          "command": "clippy"
+        }
+      }
+    }
+  },
+  "git": {
+    "inline_blame": {
+      "enabled": false
+    }
+  },
+  "tabs": {
+    "git_status": true
+  },
+  "collaboration_panel": {
+    "button": false
+  },
+  "chat_panel": {
+    "button": false
+  },
+  "telemetry": {
+    "diagnostics": false,
+    "metrics": false
+  }
+}

@@ -1,0 +1,29 @@
+#!/usr/bin/env sh
+
+yabai -m config external_bar off:40:0
+yabai -m config menubar_opacity 1.0
+yabai -m config mouse_follows_focus off
+yabai -m config focus_follows_mouse off
+yabai -m config display_arrangement_order default
+yabai -m config window_origin_display default
+yabai -m config window_placement second_child
+yabai -m config window_zoom_persist on
+yabai -m config insert_feedback_color 0xff5fd75f
+yabai -m config split_ratio 0.50
+yabai -m config split_type auto
+yabai -m config auto_balance on
+yabai -m config top_padding 4
+yabai -m config bottom_padding 4
+yabai -m config left_padding 4
+yabai -m config right_padding 4
+yabai -m config window_gap 4
+yabai -m config layout bsp
+yabai -m config mouse_modifier fn
+yabai -m config mouse_action1 move
+yabai -m config mouse_action2 resize
+yabai -m config mouse_drop_action swap
+
+yabai -m rule --add app="^Raycast$" manage=off
+yabai -m rule --add app="^시스템 설정$" manage=off
+yabai -m rule --add app="^미리보기$" manage=off
+yabai -m rule --add app="^Finder$" manage=off

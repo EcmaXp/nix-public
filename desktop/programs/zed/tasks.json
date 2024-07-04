@@ -1,0 +1,8 @@
+[
+  {
+    "label": "workspace: open kitty terminal",
+    "command": "open -b net.kovidgoyal.kitty .",
+    "use_new_terminal": false,
+    "reveal": "never"
+  }
+]

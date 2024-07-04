@@ -1,0 +1,30 @@
+[tool.poetry]
+name = "nix-public"
+version = "1.0.0"
+description = ""
+authors = []
+repository = "https://github.com/EcmaXp/nix-public"
+packages = [{ include = "desktop" }]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+PyYAML = "^6.0.1"
+watchdog = "^4.0.1"
+sqlmodel = "^0.0.19"
+sqlalchemy = "^2.0.30"
+sqlalchemy-utils = "^0.41.2"
+gitpython = "3.1.43"
+click = "^8.1.7"
+
+[tool.poetry.group.dev.dependencies]
+"reloader.py" = "^0.14.2"
+sqlacodegen = { git = "https://github.com/agronholm/sqlacodegen.git", rev = "3.0.0rc5" }
+black = "^24.4.2"
+isort = "^5.13.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.scripts]
+sync = "desktop.syncers.__main__:main"
