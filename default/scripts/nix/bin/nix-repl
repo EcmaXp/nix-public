@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+
+exec nix repl --expr '{ nix = builtins.getFlake (toString ~/nix); }' $argv

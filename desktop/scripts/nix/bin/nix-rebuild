@@ -1,0 +1,3 @@
+#!/usr/bin/env fish
+
+exec darwin-rebuild switch --flake ~/nix $argv
