@@ -1,0 +1,16 @@
+[project]
+name = "nix"
+version = "1"
+description = "EcmaXp's nix"
+authors = [{ name = "EcmaXp" }]
+requires-python = "~= 3.12.7"
+
+[project.urls]
+Repository = "https://github.com/EcmaXp/nix-public"
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
+
+[tool.uv.workspace]
+members = ["desktop/scripts/nix"]

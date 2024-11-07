@@ -1,0 +1,138 @@
+[
+  {
+    "bindings": {
+      "home": "editor::MoveToBeginning",
+      "end": "editor::MoveToEnd",
+      "pageup": "editor::MovePageUp",
+      "pagedown": "editor::MovePageDown",
+      "shift-enter": "editor::ExpandExcerpts",
+      "shift-home": "editor::SelectToBeginning",
+      "shift-end": "editor::SelectToEnd",
+      "shift-pageup": "editor::SelectPageUp",
+      "shift-pagedown": "editor::SelectPageDown",
+      // alt <-> cmd swapped
+      "alt-up": "editor::AddSelectionAbove",
+      "alt-down": "editor::AddSelectionBelow",
+      "alt-shift-up": "editor::UndoSelection",
+      "alt-shift-down": "editor::SelectNext",
+      "cmd-left": [
+        "editor::MoveToBeginningOfLine",
+        { "stop_at_soft_wraps": false }
+      ],
+      "cmd-right": ["editor::MoveToEndOfLine", { "stop_at_soft_wraps": false }],
+      "cmd-shift-left": [
+        "editor::SelectToBeginningOfLine",
+        { "stop_at_soft_wraps": false }
+      ],
+      "cmd-shift-right": [
+        "editor::SelectToEndOfLine",
+        { "stop_at_soft_wraps": false }
+      ],
+      "cmd-up": ["editor::SelectPrevious", { "replace_newest": true }],
+      "cmd-down": ["editor::SelectNext", { "replace_newest": true }],
+      "cmd-shift-up": "editor::SelectSmallerSyntaxNode",
+      "cmd-shift-down": "editor::SelectLargerSyntaxNode",
+      "cmd-shift-alt-down": "editor::SelectAllMatches",
+      "cmd-shift-alt-up": "editor::Cancel",
+      // hyper key
+      "cmd-ctrl-shift-left": "pane::ActivatePrevItem",
+      "cmd-ctrl-shift-right": "pane::ActivateNextItem",
+      "cmd-ctrl-alt-shift-left": ["workspace::ActivatePaneInDirection", "Left"],
+      "cmd-ctrl-alt-shift-right": [
+        "workspace::ActivatePaneInDirection",
+        "Right"
+      ],
+      "cmd-ctrl-alt-shift-up": ["workspace::ActivatePaneInDirection", "Up"],
+      "cmd-ctrl-alt-shift-down": ["workspace::ActivatePaneInDirection", "Down"],
+      "cmd-ctrl-alt-shift-enter": "terminal_panel::ToggleFocus",
+      "cmd-ctrl-alt-shift-home": "workspace::ToggleLeftDock",
+      "cmd-ctrl-alt-shift-end": "workspace::ToggleRightDock",
+      "cmd-ctrl-alt-shift-pagedown": "workspace::ToggleBottomDock",
+      "cmd-alt-shift-enter": "assistant::ToggleFocus",
+      "cmd-ctrl-shift-enter": "workspace::ToggleZoom",
+      "ctrl-alt-shift-left": "editor::SelectPrevious",
+      "ctrl-alt-shift-right": "editor::SelectNext"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "cmd-t": "project_panel::NewFile",
+      "cmd-shift-f": "project_panel::NewSearchInDirectory",
+      "cmd-shift-c": "project_panel::CopyRelativePath",
+      "cmd-alt-shift-c": "project_panel::CopyPath",
+      "cmd-k t": "workspace::OpenInTerminal"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-enter": "repl::Run",
+      "ctrl-space": "editor::ShowCompletions",
+      "cmd-shift-c": "editor::CopyRelativePath",
+      "cmd-alt-shift-c": "editor::CopyPath",
+      "cmd-f": ["buffer_search::Deploy", { "replace_enabled": false }],
+      "cmd-shift-f": ["pane::DeploySearch", { "replace_enabled": false }],
+      "alt-f": [
+        "buffer_search::Deploy",
+        { "replace_enabled": false, "selection_search_enabled": true }
+      ],
+      "cmd-r": ["buffer_search::Deploy", { "replace_enabled": true }],
+      "cmd-shift-r": ["pane::DeploySearch", { "replace_enabled": true }],
+      "alt-r": [
+        "buffer_search::Deploy",
+        { "replace_enabled": true, "selection_search_enabled": true }
+      ],
+      "cmd-enter": "editor::Rename",
+      "cmd-shift-enter": "editor::ToggleCodeActions",
+      "cmd-ctrl-s": "editor::SortLinesCaseInsensitive",
+      "cmd-ctrl-d": "editor::UniqueLinesCaseInsensitive",
+      "cmd-ctrl-u": "editor::ConvertToUpperCase",
+      "cmd-ctrl-l": "editor::ConvertToLowerCase",
+      "cmd-ctrl-o": "editor::ConvertToOppositeCase",
+      "cmd-ctrl-t": "editor::ConvertToTitleCase",
+      "cmd-ctrl--": "editor::ConvertToKebabCase",
+      "cmd-ctrl-=": "editor::ConvertToSnakeCase",
+      "cmd-ctrl-[": "editor::ConvertToUpperCamelCase",
+      "cmd-ctrl-]": "editor::ConvertToLowerCamelCase",
+      "cmd-k t": "workspace::OpenInTerminal",
+      "cmd-alt-t": "workspace::NewCenterTerminal"
+    }
+  },
+  {
+    "context": "Workspace",
+    "bindings": {
+      "fn-x": "workspace::Welcome",
+      "cmd-r": ["buffer_search::Deploy", { "replace_enabled": true }],
+      "cmd-t": "workspace::NewFile",
+      "cmd-n": ["workspace::SendKeystrokes", ""], // no-op
+      "cmd-alt-t": "workspace::NewCenterTerminal"
+    }
+  },
+  {
+    "context": "AssistantPanel",
+    "bindings": {}
+  },
+  {
+    "context": "Terminal",
+    "bindings": {
+      "cmd-t": "workspace::NewTerminal",
+      "cmd-p": ["terminal::SendKeystroke", "ctrl-r"],
+      "alt-shift-t": ["terminal::SendKeystroke", "cmd-f12"],
+      "cmd-shift-c": ["terminal::SendText", "Ç"],
+      "cmd-shift-v": ["terminal::SendText", "◊"],
+      // alt <-> cmd swapped
+      "alt-left": ["terminal::SendText", "\u001B[1;3D"],
+      "alt-right": ["terminal::SendText", "\u001B[1;3C"],
+      "cmd-backspace": ["terminal::SendText", "\u0015"]
+    }
+  },
+  {
+    "context": "(BufferSearchBar || ProjectSearchBar) > Editor",
+    "bindings": {
+      // alt <-> cmd swapped
+      "cmd-up": "search::SelectPrevMatch",
+      "cmd-down": "search::SelectNextMatch"
+    }
+  }
+]
