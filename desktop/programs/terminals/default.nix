@@ -1,0 +1,6 @@
+{ ... }: {
+  imports = [
+    ./ghostty
+    ./kitty
+  ];
+}
