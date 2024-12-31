@@ -1,0 +1,25 @@
+programs:
+  Aptakube: com.aptakube.Aptakube
+  Arc Browser: company.thebrowser.Browser
+  Zen Browser: org.mozilla.com.zen.browser
+  Discord Canary: com.hnc.DiscordCanary
+  Discord: com.hnc.Discord
+  Duolingo: com.duolingo.DuolingoMobile
+  Fork: com.DanPristupov.Fork
+  Ghosttty: com.mitchellh.ghostty
+  JetBrains: com.jetbrains.*
+  Kitty: net.kovidgoyal.kitty
+  Notion: notion.id
+  Obsidian: md.obsidian
+  OpenLens: com.electron.open-lens
+  Parallels Desktop: com.parallels.desktop.console
+  Raycast: com.raycast.macos
+  Safari: com.apple.Safari
+  Slack: com.tinyspeck.slackmacgap
+  VSCode: com.microsoft.VSCode
+  VSCode Insiders: com.microsoft.VSCodeInsiders
+  Zed: dev.zed.Zed
+  iTerm: com.googlecode.iterm2
+  TypingMind:
+    - com.apple.Safari.WebApp.634D9C48-9424-4CC4-9377-0111A372D7F6
+    - com.apple.Safari.WebApp.3CD34F74-FB4E-461F-B92A-BD80BBD59981
