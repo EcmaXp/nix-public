@@ -1,0 +1,16 @@
+# treefmt - One CLI to format the code tree
+# https://github.com/numtide/treefmt
+# https://treefmt.com/latest/getting-started/configure/
+
+excludes = []
+on-unmatched = "info"
+walk = "auto"
+
+[formatter.nix]
+command = "nixfmt"
+includes = ["*.nix"]
+
+[formatter.python]
+command = "ruff"
+options = ["check", "--fix", "--select", "I", "."]
+includes = ["*.py"]

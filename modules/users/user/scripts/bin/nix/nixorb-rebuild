@@ -1,0 +1,9 @@
+#!/usr/bin/env fish
+
+orb -m nixorb \
+    nix \
+    --extra-experimental-features 'nix-command flakes' \
+    shell \
+    nixpkgs#git \
+    --command \
+    sudo nixos-rebuild --flake ~/nix $argv

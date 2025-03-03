@@ -1,0 +1,7 @@
+[submodule "modules/programs/desktop/terminals/kitty/kitty_search"]
+	path = modules/programs/desktop/terminals/kitty/kitty_search
+	url = https://github.com/trygveaa/kitty-kitten-search
+
+[submodule "modules/packages/desktop/custom/AeroSpace"]
+	path = modules/packages/desktop/custom/AeroSpace
+	url = git@github.com:EcmaXp/AeroSpace.git

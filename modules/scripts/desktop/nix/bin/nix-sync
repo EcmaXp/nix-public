@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+
+cd ~/nix/modules/scripts/desktop/nix
+exec uv run nix-sync $argv
