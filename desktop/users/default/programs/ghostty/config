@@ -1,0 +1,5 @@
+# https://github.com/ghostty-org/ghostty
+# Ghostty configuration loader
+config-file = appearance.conf
+config-file = behavior.conf
+config-file = keybinds.conf
