@@ -1,0 +1,36 @@
+[project]
+name = "nix-scripts"
+version = "1"
+description = "EcmaXp's nix scripts"
+authors = [{ name = "EcmaXp" }]
+requires-python = "~= 3.13.4"
+dependencies = [
+    "click>=8.2.1",
+    "gitpython>=3.1.44",
+    "pyyaml>=6.0.2",
+    "sqlalchemy-utils>=0.41.2",
+    "sqlalchemy>=2.0.41",
+    # C_INCLUDE_PATH=/opt/homebrew/include/ LIBRARY_PATH=/opt/homebrew/lib/ uv sync
+    "sqlcipher3>=0.5.4",
+    "sqlmodel>=0.0.24",
+    "watchdog>=6.0.0",
+]
+
+[dependency-groups]
+dev = [
+    "reloader-py>=0.18.0",
+    "sqlacodegen>=3.0.0",
+]
+
+[project.urls]
+Repository = "https://github.com/EcmaXp/nix-public"
+
+[project.scripts]
+nix-sync = "syncers.__main__:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["syncers"]
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"

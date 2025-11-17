@@ -1,0 +1,8 @@
+#!/usr/bin/env fish
+nix-sync
+and nh darwin switch
+and nh home switch
+and brew upgrade
+and brew update
+and mise-upgrade
+and nix-clean

@@ -1,0 +1,2 @@
+#!/usr/bin/env fish
+MISE_GITHUB_TOKEN=(gh auth token) mise upgrade -j 8 --yes $argv

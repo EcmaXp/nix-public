@@ -1,0 +1,27 @@
+// https://zed.dev/docs/configuring-zed#settings-files
+{
+  "file_scan_exclusions": [
+    // default
+    "**/.git",
+    "**/.svn",
+    "**/.hg",
+    "**/CVS",
+    "**/.DS_Store",
+    "**/Thumbs.db",
+    "**/.classpath",
+    "**/.settings",
+    "**/__pycache__",
+    "**/.ruff_cache",
+    // git submodules
+    "desktop/users/default/packages/custom/AeroSpace"
+  ],
+  "file_types": {
+    "Just": ["**/scripts/bin/secrets/secrets", "**/scripts/bin/cookie/cookie"],
+    "JSONC": ["*.json5"]
+  },
+  "languages": {
+    "JSONC": {
+      "format_on_save": "off"
+    }
+  }
+}

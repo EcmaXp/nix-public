@@ -1,0 +1,5 @@
+repos: []
+  # - repo: https://github.com/NixOS/nixfmt
+  #   rev: null  # TODO: fill with git tag
+  #   hooks:
+  #     - id: nixfmt

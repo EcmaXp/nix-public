@@ -1,0 +1,4 @@
+#!/usr/bin/env fish
+for script in ~/nix/**/scripts/**/bin/**
+    chmod +x $script
+end
